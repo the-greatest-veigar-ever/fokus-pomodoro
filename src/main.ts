@@ -124,6 +124,45 @@ class FokusApp {
 
     // Store references to prevent unused variable warnings
     void this.themeManager;
+
+    // Setup info popup functionality
+    this.setupInfoPopup();
+  }
+
+  private setupInfoPopup(): void {
+    const infoBtn = document.getElementById('info-btn');
+    const infoPopup = document.getElementById('info-popup');
+    const closePopup = document.getElementById('close-popup');
+
+    if (!infoBtn || !infoPopup || !closePopup) return;
+
+    // Open popup on button click
+    infoBtn.addEventListener('click', () => {
+      infoPopup.classList.add('active');
+      document.body.style.overflow = 'hidden'; // Prevent background scrolling
+    });
+
+    // Close popup on close button click
+    closePopup.addEventListener('click', () => {
+      infoPopup.classList.remove('active');
+      document.body.style.overflow = ''; // Restore scrolling
+    });
+
+    // Close popup on background click
+    infoPopup.addEventListener('click', (e) => {
+      if (e.target === infoPopup) {
+        infoPopup.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    });
+
+    // Close popup on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && infoPopup.classList.contains('active')) {
+        infoPopup.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    });
   }
 
   private initializeComponents(): void {
