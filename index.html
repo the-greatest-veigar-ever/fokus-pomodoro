@@ -26,8 +26,8 @@
   <meta property="og:image" content="/icon-512.png" />
 
   <title>Fokus - Pomodoro Timer</title>
-  <script type="module" crossorigin src="/fokus-pomodoro/assets/index-CA9zKibT.js"></script>
-  <link rel="stylesheet" crossorigin href="/fokus-pomodoro/assets/index-CORVUFOo.css">
+  <script type="module" crossorigin src="/fokus-pomodoro/assets/index-vO0c4Hy_.js"></script>
+  <link rel="stylesheet" crossorigin href="/fokus-pomodoro/assets/index-C9A_chI5.css">
 </head>
 <body>
   <div id="app">
@@ -37,11 +37,51 @@
           <h1 class="app-title">Fokus</h1>
           <p class="app-subtitle">Stay focused, get productive</p>
         </div>
-        <button id="theme-toggle" class="theme-toggle" title="Toggle dark/light mode" style="background: white; border: 2px solid black; border-radius: 50%; width: 48px; height: 48px; display: flex !important; align-items: center; justify-content: center; cursor: pointer; flex-shrink: 0; box-shadow: 0 2px 8px rgba(0,0,0,0.15);">
-          <span class="theme-icon" style="font-size: 22px; line-height: 1;">🌙</span>
-        </button>
+        <div class="header-buttons">
+          <button id="info-btn" class="info-btn" title="About Pomodoro Technique">
+            <svg width="22" height="22" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M10 14V10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              <circle cx="10" cy="7" r="0.75" fill="currentColor"/>
+            </svg>
+          </button>
+          <button id="theme-toggle" class="theme-toggle" title="Toggle dark/light mode" style="background: white; border: 2px solid black; border-radius: 50%; width: 48px; height: 48px; display: flex !important; align-items: center; justify-content: center; cursor: pointer; flex-shrink: 0; box-shadow: 0 2px 8px rgba(0,0,0,0.15);">
+            <span class="theme-icon" style="font-size: 22px; line-height: 1;">🌙</span>
+          </button>
+        </div>
       </div>
     </header>
+
+    <!-- Pomodoro Info Popup -->
+    <div id="info-popup" class="info-popup">
+      <div class="info-popup-content glass-card">
+        <button id="close-popup" class="close-popup">&times;</button>
+        <h2>What is the Pomodoro Technique?</h2>
+        <div class="info-content">
+          <p>The Pomodoro Technique is a time management method developed by Francesco Cirillo in the late 1980s. It uses a timer to break work into focused intervals.</p>
+
+          <h3>How it works:</h3>
+          <ol>
+            <li><strong>Choose a task</strong> you want to work on</li>
+            <li><strong>Set the timer</strong> for 25 minutes (one "Pomodoro")</li>
+            <li><strong>Work focused</strong> until the timer rings</li>
+            <li><strong>Take a short break</strong> (5 minutes)</li>
+            <li><strong>After 4 Pomodoros</strong>, take a longer break (15-30 minutes)</li>
+          </ol>
+
+          <h3>Why it's effective:</h3>
+          <ul>
+            <li><strong>Reduces mental fatigue</strong> through regular breaks</li>
+            <li><strong>Improves focus</strong> by creating urgency with time constraints</li>
+            <li><strong>Tracks progress</strong> through completed sessions</li>
+            <li><strong>Prevents burnout</strong> with scheduled rest periods</li>
+            <li><strong>Boosts motivation</strong> by making large tasks manageable</li>
+          </ul>
+
+          <p class="info-tip"><strong>Pro tip:</strong> During your Pomodoro, eliminate all distractions and focus solely on your chosen task. If an interruption occurs, either deal with it quickly or note it down for later.</p>
+        </div>
+      </div>
+    </div>
 
     <main class="app-main">
       <section class="timer-section glass-card">
