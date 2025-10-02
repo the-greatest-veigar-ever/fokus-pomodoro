@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/fokus-pomodoro/laptop-icon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+  <meta name="description" content="Fokus - A beautiful Pomodoro technique app with todo list for improving productivity" />
+  <meta name="theme-color" content="#00D4AA" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- PWA Meta Tags -->
+  <link rel="manifest" href="/fokus-pomodoro/manifest.json" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="apple-mobile-web-app-title" content="Fokus" />
+  <link rel="apple-touch-icon" href="/icon-192.png" />
+
+  <!-- Social Media Meta Tags -->
+  <meta property="og:title" content="Fokus - Pomodoro Timer" />
+  <meta property="og:description" content="A beautiful glassmorphism Pomodoro timer with todo list to boost your productivity" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="/icon-512.png" />
+
+  <title>Fokus - Pomodoro Timer</title>
+  <script type="module" crossorigin src="/fokus-pomodoro/assets/index-CA9zKibT.js"></script>
+  <link rel="stylesheet" crossorigin href="/fokus-pomodoro/assets/index-CORVUFOo.css">
+</head>
+<body>
+  <div id="app">
+    <header class="app-header">
+      <div class="header-content">
+        <div>
+          <h1 class="app-title">Fokus</h1>
+          <p class="app-subtitle">Stay focused, get productive</p>
+        </div>
+        <button id="theme-toggle" class="theme-toggle" title="Toggle dark/light mode" style="background: white; border: 2px solid black; border-radius: 50%; width: 48px; height: 48px; display: flex !important; align-items: center; justify-content: center; cursor: pointer; flex-shrink: 0; box-shadow: 0 2px 8px rgba(0,0,0,0.15);">
+          <span class="theme-icon" style="font-size: 22px; line-height: 1;">🌙</span>
+        </button>
+      </div>
+    </header>
+
+    <main class="app-main">
+      <section class="timer-section glass-card">
+        <div class="session-type">Work Session</div>
+
+        <div class="timer-display-container">
+          <div class="time-display">25:00</div>
+          <div class="progress-bar">
+            <div class="progress-fill"></div>
+          </div>
+        </div>
+
+        <div class="timer-controls">
+          <button id="start-pause-btn" class="control-btn primary">Start</button>
+          <button id="reset-btn" class="control-btn secondary">Reset</button>
+        </div>
+      </section>
+
+      <section class="stats-section glass-card">
+        <h2>Today's Progress</h2>
+        <div class="stats-grid">
+          <div class="stat-item">
+            <span class="stat-value" id="sessions-completed">0</span>
+            <span class="stat-label">Sessions</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-value" id="focus-time">0h 0m</span>
+            <span class="stat-label">Focus Time</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-value" id="current-streak">0</span>
+            <span class="stat-label">Streak</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="todo-section glass-card">
+        <h2>Focus Tasks</h2>
+        <div class="todo-input-container">
+          <input
+            type="text"
+            class="todo-input"
+            placeholder="Add a new task..."
+            maxlength="200"
+            autocomplete="off"
+            spellcheck="false"
+          />
+          <button class="add-todo-btn" disabled>Add Task</button>
+        </div>
+        <div class="todo-list"></div>
+        <div class="todo-stats" style="margin-top: 1rem; text-align: center; font-size: 0.875rem; color: var(--text-secondary); opacity: 0.8;">
+          <span class="todo-count">0 active, 0 completed</span>
+        </div>
+      </section>
+
+      <section class="settings-section glass-card">
+        <h2>Settings</h2>
+        <div class="settings-grid">
+          <div class="setting-item">
+            <label for="work-duration">Work Duration (minutes)</label>
+            <input type="number" id="work-duration" min="1" max="60" value="25">
+          </div>
+          <div class="setting-item">
+            <label for="short-break">Short Break (minutes)</label>
+            <input type="number" id="short-break" min="1" max="30" value="5">
+          </div>
+          <div class="setting-item">
+            <label for="long-break">Long Break (minutes)</label>
+            <input type="number" id="long-break" min="1" max="60" value="15">
+          </div>
+          <div class="setting-item">
+            <label for="auto-start">Auto-start breaks</label>
+            <input type="checkbox" id="auto-start">
+          </div>
+          <div class="setting-item">
+            <label for="sound-enabled">Sound notifications</label>
+            <input type="checkbox" id="sound-enabled" checked>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="app-footer">
+      <p>&copy; 2025 Fokus - Built with focus in mind</p>
+    </footer>
+  </div>
+
+</body>
+</html>
