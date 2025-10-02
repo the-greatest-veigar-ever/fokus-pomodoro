@@ -1,0 +1,699 @@
+/* Minimal Luxury Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+/* CSS Reset */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+:root {
+  /* Pure Black & White System */
+  --pure-white: #ffffff;
+  --pure-black: #000000;
+
+  /* Minimal Gray Scale */
+  --gray-50: #fafafa;
+  --gray-100: #f5f5f5;
+  --gray-200: #e5e5e5;
+  --gray-800: #1a1a1a;
+  --gray-900: #0a0a0a;
+
+  /* Typography */
+  --font-primary: 'Inter', 'SF Pro Display', system-ui, -apple-system, sans-serif;
+  --font-display: 'Space Grotesk', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', 'SF Mono', monospace;
+
+  /* Minimal Shadows */
+  --shadow-subtle: 0 1px 3px rgba(0, 0, 0, 0.08);
+  --shadow-medium: 0 2px 8px rgba(0, 0, 0, 0.12);
+  --shadow-large: 0 4px 16px rgba(0, 0, 0, 0.16);
+}
+
+/* Light Mode (Default) */
+:root {
+  --bg-primary: #ffffff;
+  --bg-secondary: #fafafa;
+  --bg-card: #ffffff;
+  --text-primary: #000000;
+  --text-secondary: #404040;
+  --text-tertiary: #737373;
+  --border-primary: #e5e5e5;
+  --border-secondary: #f5f5f5;
+  --shadow-color: rgba(0, 0, 0, 0.08);
+}
+
+/* Dark Mode - System Preference */
+@media (prefers-color-scheme: dark) {
+  :root:not(.light) {
+    --bg-primary: #000000;
+    --bg-secondary: #0a0a0a;
+    --bg-card: #000000;
+    --text-primary: #ffffff;
+    --text-secondary: #cccccc;
+    --text-tertiary: #999999;
+    --border-primary: #1a1a1a;
+    --border-secondary: #0a0a0a;
+    --shadow-color: rgba(255, 255, 255, 0.04);
+  }
+}
+
+/* Manual Dark Mode Class */
+body.dark {
+  --bg-primary: #000000;
+  --bg-secondary: #0a0a0a;
+  --bg-card: #000000;
+  --text-primary: #ffffff;
+  --text-secondary: #cccccc;
+  --text-tertiary: #999999;
+  --border-primary: #1a1a1a;
+  --border-secondary: #0a0a0a;
+  --shadow-color: rgba(255, 255, 255, 0.04);
+}
+
+/* Manual Light Mode Class */
+body.light {
+  --bg-primary: #ffffff;
+  --bg-secondary: #fafafa;
+  --bg-card: #ffffff;
+  --text-primary: #000000;
+  --text-secondary: #404040;
+  --text-tertiary: #737373;
+  --border-primary: #e5e5e5;
+  --border-secondary: #f5f5f5;
+  --shadow-color: rgba(0, 0, 0, 0.08);
+}
+
+/* Minimal Luxury Body */
+body {
+  font-family: var(--font-primary);
+  min-height: 100vh;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* App Container */
+#app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header */
+.app-header {
+  padding: 3rem 2rem;
+  border-bottom: 1px solid var(--border-primary);
+  background: var(--bg-card);
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.app-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 6vw, 3.5rem);
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  color: var(--text-primary);
+  letter-spacing: -0.03em;
+}
+
+.app-subtitle {
+  font-size: 1.125rem;
+  font-weight: 300;
+  color: var(--text-secondary);
+  letter-spacing: 0.02em;
+}
+
+/* Theme Toggle Button */
+.theme-toggle {
+  background: var(--bg-card);
+  border: 2px solid var(--text-primary);
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 8px var(--shadow-color);
+  position: relative;
+  z-index: 10;
+}
+
+.theme-toggle:hover {
+  background: var(--text-primary);
+  border-color: var(--text-primary);
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px var(--shadow-color);
+}
+
+.theme-toggle:hover .theme-icon {
+  filter: invert(1);
+}
+
+.theme-icon {
+  font-size: 22px;
+  line-height: 1;
+  user-select: none;
+}
+
+/* Main Content Grid */
+.app-main {
+  flex: 1;
+  padding: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+/* Card System */
+.glass-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-primary);
+  border-radius: 2px;
+  padding: 2.5rem;
+  box-shadow: 0 1px 3px var(--shadow-color);
+}
+
+/* Timer Section */
+.timer-section {
+  text-align: center;
+  padding: 4rem 3rem;
+  position: relative;
+}
+
+/* Hide only circular timer elements, not the time display */
+.circular-timer,
+.timer-circle,
+svg.timer-circle {
+  display: none !important;
+}
+
+.session-type {
+  font-family: var(--font-display);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  margin-bottom: 3.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+}
+
+/* Timer Display */
+.timer-display-container {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 2rem 0;
+}
+
+.time-display {
+  font-family: var(--font-mono);
+  font-size: clamp(5rem, 15vw, 9rem);
+  font-weight: 300;
+  color: var(--text-primary);
+  letter-spacing: 0.05em;
+  text-align: center;
+  margin-bottom: 3.5rem;
+  line-height: 1;
+  display: block !important;
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.time-display::after {
+  content: '';
+  position: absolute;
+  bottom: -1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 1px;
+  background: var(--text-primary);
+  opacity: 0.3;
+}
+
+.progress-bar {
+  position: relative;
+  width: 100%;
+  height: 8px;
+  background: var(--border-primary);
+  border-radius: 1px;
+  overflow: hidden;
+  margin: 4rem 0;
+  border: 1px solid var(--border-primary);
+}
+
+.progress-fill {
+  position: absolute;
+  height: 100%;
+  background: var(--text-primary);
+  width: 0%;
+  left: 0;
+  top: 0;
+  transition: width 0.3s ease;
+  box-shadow: 0 0 10px var(--text-primary);
+}
+
+/* Control Buttons */
+.timer-controls {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.control-btn {
+  padding: 0.875rem 2rem;
+  border: 1px solid var(--border-primary);
+  border-radius: 2px;
+  font-family: var(--font-primary);
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  min-width: 140px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  background: transparent;
+  color: var(--text-primary);
+}
+
+.control-btn:hover {
+  background: var(--text-primary);
+  color: var(--bg-primary);
+  border-color: var(--text-primary);
+}
+
+.control-btn.primary {
+  background: var(--text-primary);
+  color: var(--bg-primary);
+  border-color: var(--text-primary);
+}
+
+.control-btn.primary:hover {
+  background: transparent;
+  color: var(--text-primary);
+  border-color: var(--text-primary);
+}
+
+.control-btn.secondary {
+  background: transparent;
+  color: var(--text-primary);
+  border-color: var(--border-primary);
+}
+
+.control-btn.secondary:hover {
+  background: var(--text-primary);
+  color: var(--bg-primary);
+  border-color: var(--text-primary);
+}
+
+/* Section Headers */
+.stats-section h2,
+.settings-section h2,
+.todo-section h2 {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-bottom: 2rem;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+}
+
+/* Stats Grid */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1.5rem;
+}
+
+.stat-item {
+  text-align: center;
+  padding: 2rem 1.5rem;
+  border: 1px solid var(--border-primary);
+  border-radius: 2px;
+  background: var(--bg-secondary);
+}
+
+.stat-value {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: clamp(2rem, 4vw, 2.5rem);
+  font-weight: 400;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.stat-label {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 500;
+}
+
+/* Todo Section */
+.todo-input-container {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.todo-input {
+  flex: 1;
+  padding: 0.875rem 1rem;
+  border: 1px solid var(--border-primary);
+  border-radius: 2px;
+  font-size: 0.875rem;
+  background: var(--bg-card);
+  color: var(--text-primary);
+  font-family: var(--font-primary);
+}
+
+.todo-input:focus {
+  outline: none;
+  border-color: var(--text-primary);
+}
+
+.todo-input::placeholder {
+  color: var(--text-tertiary);
+}
+
+.add-todo-btn {
+  padding: 0.875rem 1.5rem;
+  background: var(--text-primary);
+  color: var(--bg-primary);
+  border: 1px solid var(--text-primary);
+  border-radius: 2px;
+  font-weight: 500;
+  font-size: 0.875rem;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+}
+
+.add-todo-btn:hover {
+  background: transparent;
+  color: var(--text-primary);
+}
+
+.add-todo-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.todo-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.todo-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.todo-list::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+}
+
+.todo-list::-webkit-scrollbar-thumb {
+  background: var(--border-primary);
+}
+
+.todo-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  background: var(--bg-secondary);
+  border: 1.5px solid var(--border-primary);
+  border-radius: 2px;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.todo-item:hover {
+  border-color: var(--text-secondary);
+  box-shadow: 0 2px 8px var(--shadow-color);
+}
+
+.todo-text {
+  flex: 1;
+  color: var(--text-primary);
+  font-weight: 400;
+  margin-right: 1rem;
+  font-size: 0.875rem;
+}
+
+.todo-text.completed {
+  text-decoration: line-through;
+  opacity: 0.5;
+}
+
+.todo-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.todo-btn {
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--border-primary);
+  border-radius: 2px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.875rem;
+  background: transparent;
+}
+
+.complete-btn {
+  color: var(--text-primary);
+}
+
+.complete-btn:hover {
+  background: var(--text-primary);
+  color: var(--bg-primary);
+  border-color: var(--text-primary);
+}
+
+.delete-btn {
+  color: var(--text-primary);
+}
+
+.delete-btn:hover {
+  background: var(--text-primary);
+  color: var(--bg-primary);
+  border-color: var(--text-primary);
+}
+
+/* Settings Section */
+.settings-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.setting-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+}
+
+.setting-item label {
+  font-weight: 500;
+  color: var(--text-primary);
+  font-size: 0.875rem;
+}
+
+.setting-item input[type="number"] {
+  padding: 0.875rem 1rem;
+  border: 1px solid var(--border-primary);
+  border-radius: 2px;
+  font-size: 0.875rem;
+  background: var(--bg-card);
+  color: var(--text-primary);
+  font-family: var(--font-mono);
+}
+
+.setting-item input[type="number"]:focus {
+  outline: none;
+  border-color: var(--text-primary);
+}
+
+/* Custom Number Input Spinners */
+.setting-item input[type="number"]::-webkit-inner-spin-button,
+.setting-item input[type="number"]::-webkit-outer-spin-button {
+  opacity: 1;
+  height: 100%;
+  cursor: pointer;
+  background: var(--bg-secondary);
+  border-left: 1px solid var(--border-primary);
+  margin-left: 0.5rem;
+}
+
+.setting-item input[type="number"]::-webkit-inner-spin-button:hover,
+.setting-item input[type="number"]::-webkit-outer-spin-button:hover {
+  background: var(--text-primary);
+}
+
+/* Firefox number input spinners */
+.setting-item input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.setting-item input[type="number"]:hover,
+.setting-item input[type="number"]:focus {
+  -moz-appearance: number-input;
+}
+
+.setting-item input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  accent-color: var(--text-primary);
+  cursor: pointer;
+}
+
+/* Footer */
+.app-footer {
+  text-align: center;
+  padding: 2rem;
+  color: var(--text-tertiary);
+  font-size: 0.75rem;
+  border-top: 1px solid var(--border-primary);
+  margin-top: auto;
+  letter-spacing: 0.05em;
+}
+
+/* Responsive Design */
+@media (min-width: 1024px) {
+  .app-main {
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: auto auto auto;
+  }
+
+  .timer-section {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .todo-section {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+  }
+
+  .stats-section {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .settings-section {
+    grid-column: 1 / span 2;
+    grid-row: 3;
+  }
+}
+
+@media (max-width: 768px) {
+  .app-header {
+    padding: 2rem 1.5rem;
+  }
+
+  .timer-section {
+    padding: 3rem 2rem;
+    min-height: 500px;
+  }
+
+  .time-display {
+    font-size: clamp(4rem, 12vw, 6rem);
+    margin-bottom: 3rem;
+  }
+
+  .todo-input-container {
+    flex-direction: column;
+  }
+
+  .glass-card {
+    padding: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .app-main {
+    padding: 1rem;
+    gap: 1rem;
+  }
+
+  .app-header {
+    padding: 2rem 1rem;
+  }
+
+  .timer-section {
+    padding: 2.5rem 1.5rem;
+  }
+
+  .time-display {
+    font-size: clamp(3rem, 16vw, 4.5rem);
+    margin-bottom: 2.5rem;
+  }
+
+  .session-type {
+    margin-bottom: 2.5rem;
+  }
+
+  .progress-bar {
+    height: 6px;
+    margin: 3rem 0;
+  }
+
+  .timer-controls {
+    flex-direction: column;
+  }
+
+  .control-btn {
+    width: 100%;
+  }
+
+  .glass-card {
+    padding: 1.5rem;
+  }
+}
+
+/* Focus States */
+.control-btn:focus,
+.todo-input:focus,
+.add-todo-btn:focus,
+.todo-btn:focus,
+.setting-item input:focus,
+.theme-toggle:focus {
+  outline: 2px solid var(--text-primary);
+  outline-offset: 2px;
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
