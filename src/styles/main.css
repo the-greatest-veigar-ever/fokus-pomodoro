@@ -613,14 +613,54 @@ svg.timer-circle {
 }
 
 /* Footer */
+/* Footer */
 .app-footer {
   text-align: center;
-  padding: 2rem;
+  padding: 3rem 2rem;
   color: var(--text-tertiary);
-  font-size: 0.75rem;
+  font-size: 0.875rem;
   border-top: 1px solid var(--border-primary);
   margin-top: auto;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.02em;
+  background: var(--bg-card);
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.social-links {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.social-link {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--border-primary);
+  border-radius: 2px;
+}
+
+.social-link:hover {
+  color: var(--bg-primary);
+  background: var(--text-primary);
+  border-color: var(--text-primary);
+}
+
+.separator {
+  color: var(--border-primary);
+}
+
+.copyright {
+  color: var(--text-tertiary);
+  font-size: 0.75rem;
 }
 
 /* Responsive Design */

@@ -1,16 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <link rel="icon" type="image/svg+xml" href="laptop-icon.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
-  <meta name="description" content="Fokus - A beautiful Pomodoro technique app with todo list for improving productivity" />
+  <meta name="description"
+    content="Fokus - A beautiful Pomodoro technique app with todo list for improving productivity" />
   <meta name="theme-color" content="#00D4AA" />
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
 
   <!-- PWA Meta Tags -->
   <link rel="manifest" href="manifest.json" />
@@ -21,12 +25,14 @@
 
   <!-- Social Media Meta Tags -->
   <meta property="og:title" content="Fokus - Pomodoro Timer" />
-  <meta property="og:description" content="A beautiful glassmorphism Pomodoro timer with todo list to boost your productivity" />
+  <meta property="og:description"
+    content="A beautiful glassmorphism Pomodoro timer with todo list to boost your productivity" />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="icon-512.png" />
 
   <title>Fokus - Pomodoro Timer</title>
 </head>
+
 <body>
   <div id="app">
     <header class="app-header">
@@ -38,12 +44,13 @@
         <div class="header-buttons">
           <button id="info-btn" class="info-btn" title="About Pomodoro Technique">
             <svg width="22" height="22" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="1.5"/>
-              <path d="M10 14V10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-              <circle cx="10" cy="7" r="0.75" fill="currentColor"/>
+              <circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="1.5" />
+              <path d="M10 14V10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+              <circle cx="10" cy="7" r="0.75" fill="currentColor" />
             </svg>
           </button>
-          <button id="theme-toggle" class="theme-toggle" title="Toggle dark/light mode" style="background: white; border: 2px solid black; border-radius: 50%; width: 48px; height: 48px; display: flex !important; align-items: center; justify-content: center; cursor: pointer; flex-shrink: 0; box-shadow: 0 2px 8px rgba(0,0,0,0.15);">
+          <button id="theme-toggle" class="theme-toggle" title="Toggle dark/light mode"
+            style="background: white; border: 2px solid black; border-radius: 50%; width: 48px; height: 48px; display: flex !important; align-items: center; justify-content: center; cursor: pointer; flex-shrink: 0; box-shadow: 0 2px 8px rgba(0,0,0,0.15);">
             <span class="theme-icon" style="font-size: 22px; line-height: 1;">🌙</span>
           </button>
         </div>
@@ -56,7 +63,8 @@
         <button id="close-popup" class="close-popup">&times;</button>
         <h2>What is the Pomodoro Technique?</h2>
         <div class="info-content">
-          <p>The Pomodoro Technique is a time management method developed by Francesco Cirillo in the late 1980s. It uses a timer to break work into focused intervals.</p>
+          <p>The Pomodoro Technique is a time management method developed by Francesco Cirillo in the late 1980s. It
+            uses a timer to break work into focused intervals.</p>
 
           <h3>How it works:</h3>
           <ol>
@@ -76,7 +84,9 @@
             <li><strong>Boosts motivation</strong> by making large tasks manageable</li>
           </ul>
 
-          <p class="info-tip"><strong>Pro tip:</strong> During your Pomodoro, eliminate all distractions and focus solely on your chosen task. If an interruption occurs, either deal with it quickly or note it down for later.</p>
+          <p class="info-tip"><strong>Pro tip:</strong> During your Pomodoro, eliminate all distractions and focus
+            solely on your chosen task. If an interruption occurs, either deal with it quickly or note it down for
+            later.</p>
         </div>
       </div>
     </div>
@@ -119,18 +129,13 @@
       <section class="todo-section glass-card">
         <h2>Focus Tasks</h2>
         <div class="todo-input-container">
-          <input
-            type="text"
-            class="todo-input"
-            placeholder="Add a new task..."
-            maxlength="200"
-            autocomplete="off"
-            spellcheck="false"
-          />
+          <input type="text" class="todo-input" placeholder="Add a new task..." maxlength="200" autocomplete="off"
+            spellcheck="false" />
           <button class="add-todo-btn" disabled>Add Task</button>
         </div>
         <div class="todo-list"></div>
-        <div class="todo-stats" style="margin-top: 1rem; text-align: center; font-size: 0.875rem; color: var(--text-secondary); opacity: 0.8;">
+        <div class="todo-stats"
+          style="margin-top: 1rem; text-align: center; font-size: 0.875rem; color: var(--text-secondary); opacity: 0.8;">
           <span class="todo-count">0 active, 0 completed</span>
         </div>
       </section>
@@ -163,10 +168,24 @@
     </main>
 
     <footer class="app-footer">
-      <p>&copy; 2025 Fokus - Built with focus in mind</p>
+      <div class="footer-content">
+        <div class="social-links">
+          <a href="https://www.linkedin.com/in/quanng47/" target="_blank" rel="noopener noreferrer"
+            aria-label="LinkedIn" class="social-link">
+            LinkedIn
+          </a>
+          <span class="separator">•</span>
+          <a href="https://www.facebook.com/koderqq/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"
+            class="social-link">
+            Facebook
+          </a>
+        </div>
+        <p class="copyright">&copy; 2025 Fokus - Pomodoro Web App. Created by Nguyen Minh Quan.</p>
+      </div>
     </footer>
   </div>
 
   <script type="module" src="/src/main.ts"></script>
 </body>
+
 </html>
