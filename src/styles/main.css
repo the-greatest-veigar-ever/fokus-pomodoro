@@ -35,6 +35,12 @@ html {
   --shadow-subtle: 0 1px 3px rgba(0, 0, 0, 0.08);
   --shadow-medium: 0 2px 8px rgba(0, 0, 0, 0.12);
   --shadow-large: 0 4px 16px rgba(0, 0, 0, 0.16);
+
+  /* Modern Radius System */
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-full: 9999px;
 }
 
 /* Light Mode (Default) */
@@ -204,6 +210,7 @@ body.dark::before {
   background: var(--bg-card);
   border: 2px solid var(--text-primary);
   border-radius: 50%;
+  /* Stays 50% for perfect circle */
   width: 48px;
   height: 48px;
   display: flex;
@@ -254,7 +261,9 @@ body.dark::before {
   border: 1px solid rgba(255, 255, 255, 0.4);
   border-top: 1px solid rgba(255, 255, 255, 0.8);
   border-left: 1px solid rgba(255, 255, 255, 0.8);
-  border-radius: 2px;
+  border-top: 1px solid rgba(255, 255, 255, 0.8);
+  border-left: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: var(--radius-md);
   padding: 2.5rem;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05), inset 0 0 0 1px rgba(255, 255, 255, 0.1);
 }
@@ -373,7 +382,7 @@ svg.timer-circle {
 .control-btn {
   padding: 0.875rem 2rem;
   border: 1px solid var(--border-primary);
-  border-radius: 2px;
+  border-radius: var(--radius-full);
   font-family: var(--font-primary);
   font-size: 0.875rem;
   font-weight: 500;
@@ -439,7 +448,7 @@ svg.timer-circle {
   text-align: center;
   padding: 2rem 1.5rem;
   border: 1px solid var(--border-primary);
-  border-radius: 2px;
+  border-radius: var(--radius-md);
   background: var(--bg-secondary);
 }
 
@@ -471,7 +480,7 @@ svg.timer-circle {
   flex: 1;
   padding: 0.875rem 1rem;
   border: 1px solid var(--border-primary);
-  border-radius: 2px;
+  border-radius: var(--radius-sm);
   font-size: 0.875rem;
   background: var(--bg-card);
   color: var(--text-primary);
@@ -492,7 +501,7 @@ svg.timer-circle {
   background: var(--text-primary);
   color: var(--bg-primary);
   border: 1px solid var(--text-primary);
-  border-radius: 2px;
+  border-radius: var(--radius-full);
   font-weight: 500;
   font-size: 0.875rem;
   cursor: pointer;
@@ -539,7 +548,7 @@ svg.timer-circle {
   padding: 1rem;
   background: var(--bg-secondary);
   border: 1.5px solid var(--border-primary);
-  border-radius: 2px;
+  border-radius: var(--radius-sm);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   cursor: grab;
 }
@@ -605,7 +614,7 @@ svg.timer-circle {
   width: 32px;
   height: 32px;
   border: 1px solid var(--border-primary);
-  border-radius: 2px;
+  border-radius: var(--radius-full);
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -658,7 +667,7 @@ svg.timer-circle {
 .setting-item input[type="number"] {
   padding: 0.875rem 1rem;
   border: 1px solid var(--border-primary);
-  border-radius: 2px;
+  border-radius: var(--radius-sm);
   font-size: 0.875rem;
   background: var(--bg-card);
   color: var(--text-primary);
@@ -736,7 +745,7 @@ svg.timer-circle {
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   padding: 0.5rem 1rem;
   border: 1px solid var(--border-primary);
-  border-radius: 2px;
+  border-radius: var(--radius-full);
 }
 
 .social-link:hover {
