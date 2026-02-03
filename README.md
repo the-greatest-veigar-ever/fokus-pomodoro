@@ -1,167 +1,91 @@
-# Fokus - Pomodoro Timer Web App
+# Fokus
 
-A beautiful, modern web-based Pomodoro technique application with glassmorphism design and integrated todo list. Built with TypeScript and Vite for optimal performance and user experience.
+A high-precision, monochrome Pomodoro timer and task management system designed for flow state. Built with TypeScript and Vite, Fokus emphasizes visual clarity, performance, and a distraction-free environment.
 
-## ✨ Features
+## Design Philosophy
 
-### 🎯 **Pomodoro Timer**
-- **Classic 25-minute work sessions** with 5/15-minute breaks
-- **Beautiful glassmorphism interface** with jade green theme
-- **Animated progress indicators** and visual feedback
-- **Audio notifications** with custom chimes for completion
-- **Browser notifications** with desktop alerts
+The interface follows a "Minimal Luxury" aesthetic—pure black and white, crisp typography, and subtle glassmorphism. Every interaction is engineered to be instantaneous and satisfying, stripping away unnecessary clutter to leave only what matters: your focus.
 
-### ✅ **Focus Tasks (Todo List)**
-- **24-hour task cache** - tasks automatically expire after 1 day
-- **Quick add/remove** with keyboard shortcuts and mobile gestures
-- **Swipe-to-delete** on mobile devices
-- **Task completion tracking** with visual indicators
-- **No backend required** - uses local/session storage
+## Core Capabilities
 
-### 🎨 **Modern Design**
-- **Glassmorphism effects** with backdrop blur and transparency
-- **Green-jade color palette** with gradients and animations
-- **Responsive mobile-first design** optimized for all devices
-- **Touch-friendly interface** with gesture support
-- **Dark mode support** that adapts to system preferences
+### Precision Timer
+- **Session Management** | Standard 25-minute work blocks with 5/15-minute intervals.
+- **Audio Environment** | Custom-engineered chimes for unobtrusive state changes.
+- **Visual Feedback** | Minimalist progress indicators that respect your attention.
+- **Background Intelligence** | Smart notifications and state persistence.
 
-### 📱 **Progressive Web App (PWA)**
-- **Installable** on mobile and desktop
-- **Offline functionality** with service worker
-- **App shortcuts** for quick timer start and task adding
-- **Native app experience** when installed
+### Focus Tasks
+- **Ephemeral Storage** | Logic that mimics short-term memory—tasks expire after 24 hours to keep your slate clean.
+- **Interaction Design** | Drag-and-drop prioritization and double-click editing.
+- **Gesture Control** | Swipe protocols for rapid task management on touch devices.
+- **Zero Latency** | Local-first architecture for immediate response.
 
-### 🚀 **Performance & Deployment**
-- **GitHub Pages ready** - static hosting compatible
-- **Optimized build** with code splitting and compression
-- **Fast loading** with minimal bundle size
-- **TypeScript** for type safety and better DX
+### Technical Foundation
+- **PWA Core** | Installable native-like experience with offline capabilities.
+- **Performance** | Optimized build with sub-second load times.
+- **Type Safety** | Robust TypeScript architecture.
+- **Modern CSS** | Native CSS composition using variables and advanced layout algos.
 
-## 🚀 Getting Started
+## Quick Start
 
 ### Prerequisites
+- Node.js 14+
+- npm or yarn
 
-- Node.js (version 14 or higher)
-- npm or yarn package manager
+### Deployment
 
-### Installation
-
-1. Clone or download this repository
-2. Navigate to the project directory:
+1. Initialize the repository
    ```bash
-   cd "Fokus - Pomodoro Web App"
+   git clone https://github.com/yourusername/fokus-pomodoro.git
+   cd fokus-pomodoro
    ```
 
-3. Install dependencies:
+2. Hydrate dependencies
    ```bash
    npm install
    ```
 
-4. Start the development server:
+3. Launch development environment
    ```bash
    npm run dev
    ```
 
-5. Open your browser to `http://localhost:3000`
+4. Build for production
+   ```bash
+   npm run build
+   ```
 
-### Build for Production
+## Architecture
 
-```bash
-npm run build
-```
-
-The built files will be in the `dist` directory.
-
-## 🎯 How to Use
-
-### **Pomodoro Timer**
-1. **Start a Session**: Click the "Start" button to begin a 25-minute work session
-2. **Take Breaks**: The app automatically transitions to break periods after work sessions
-3. **Customize Settings**: Adjust timer durations and preferences in the settings section
-4. **Track Progress**: View your daily sessions, focus time, and current streak
-
-### **Focus Tasks (Todo List)**
-1. **Add Tasks**: Type in the "Focus Tasks" input and press Enter or click "Add"
-2. **Complete Tasks**: Click the ✓ button to mark tasks as complete
-3. **Delete Tasks**: Click the ✕ button or swipe left on mobile to delete tasks
-4. **Auto-Cleanup**: Tasks automatically expire after 24 hours
-
-### **Keyboard Shortcuts**
-- `Space`: Start/pause timer
-- `R`: Reset current session
-- `Enter`: Add new task (when todo input is focused)
-
-### **Mobile Features**
-- **Swipe left** on tasks to delete them
-- **Install app** via browser menu or install prompt
-- **Offline usage** once installed
-
-## 🏗️ Project Structure
+The codebase mirrors the interface: clean, structured, and modular.
 
 ```
 src/
-├── components/          # Core application components
-│   ├── Timer.ts        # Pomodoro timer logic
-│   ├── Display.ts      # Timer display and visual updates
-│   ├── Controls.ts     # Timer control buttons
-│   ├── Statistics.ts   # Session tracking and stats
-│   └── Settings.ts     # User preferences management
-├── utils/              # Utility modules
-│   ├── constants.ts    # App constants and types
-│   ├── storage.ts      # Local storage management
-│   └── audio.ts        # Audio notifications
-├── styles/             # CSS styles
-│   └── main.css        # Main application styles
-└── main.ts             # Application entry point
+├── components/          # UI Logic
+│   ├── Timer.ts        # Core state machine
+│   ├── Display.ts      # Rendering engine
+│   ├── Controls.ts     # Input handling
+│   ├── Statistics.ts   # Data visualization
+│   ├── Settings.ts     # Configuration
+│   └── TodoList.ts     # Task management
+├── utils/              # System Core
+│   ├── constants.ts    # Configuration primitives
+│   ├── storage.ts      # Persistence layer
+│   ├── todoStorage.ts  # Task persistence
+│   └── audio.ts        # Audio engine
+├── styles/             # Design System
+│   └── main.css        # Global theme
+└── main.ts             # Application entry
 ```
 
-## 🛠️ Technologies Used
+## Technology Stack
 
-- **TypeScript**: Type-safe JavaScript development
-- **Vite**: Fast build tool and development server
-- **Web Audio API**: Custom notification sounds
-- **Local Storage**: Client-side data persistence
-- **CSS Grid & Flexbox**: Responsive layout
-- **Web Notifications API**: Browser notifications
+- **TypeScript**
+- **Vite**
+- **Web Audio API**
+- **Local Storage API**
+- **Service Workers**
 
-## 📱 Browser Support
+## License
 
-- Chrome 70+
-- Firefox 65+
-- Safari 12+
-- Edge 79+
-
-## 🔧 Development Scripts
-
-- `npm run dev`: Start development server
-- `npm run build`: Build for production
-- `npm run preview`: Preview production build
-- `npm run lint`: Run ESLint
-- `npm run typecheck`: Run TypeScript type checking
-
-## 🎨 Customization
-
-The app includes several customization options:
-
-- **Timer Durations**: Adjust work and break periods
-- **Auto-start**: Automatically start breaks
-- **Sound Notifications**: Enable/disable audio alerts
-- **Visual Themes**: Automatic dark/light mode support
-
-## 🤝 Contributing
-
-This is a personal project, but feel free to fork and adapt it for your own needs!
-
-## 📄 License
-
-This project is open source and available under the MIT License.
-
-## 🙏 Acknowledgments
-
-- Inspired by the Pomodoro Technique by Francesco Cirillo
-- Built with modern web technologies for optimal performance
-- Designed with accessibility and user experience in mind
-
----
-
-**Stay focused, stay productive!** 🍅⏰
+MIT License. Open source and available for personal or commercial adaptation.

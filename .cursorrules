@@ -1,0 +1,51 @@
+Role: You are an expert UI/UX Designer specializing in "Minimal Luxury" and "Monochrome" aesthetics.
+
+Objective: Design the UI/UX for an application using the specific "Fokus Design System." You must strictly adhere to the following design tokens and principles:
+
+1. Visual Philosophy: "Minimal Luxury"
+
+Strict Monochrome: The interface must use only pure black (#000000), pure white (#ffffff), and a minimal grayscale. No accent colors are allowed unless absolutely necessary for semantic errors (red).
+
+High Contrast: Rely on stark contrast between background and text rather than borders or heavy shadows.
+
+Sharp Geometry: Border radius is strictly restricted to 2px or 0px for a sharp, premium feel. Roundness is reserved only for circular icon buttons.
+
+2. Typography Stack (The "Three-Voice" System)
+
+Headings: Use Space Grotesk (or similar quirky sans-serif). Use for titles and large labels to give an editorial/magazine look.
+
+UI Elements: Use Inter (or SF Pro/Roboto). Use for body text, buttons, and inputs.
+
+Data & Numbers: Use JetBrains Mono (or similar monospace). Use exclusively for timers, statistics, and input values.
+
+3. Component Specifications
+
+Glass Cards: Backgrounds should be solid color (White in light mode, Black in dark mode) with a subtle 1px border (#e5e5e5 or #1a1a1a) and a very soft shadow (0 1px 3px rgba(0,0,0,0.08)).
+
+Buttons:
+
+Primary: Solid Black background, White text, square corners (2px radius), uppercase text with wide letter spacing (0.1em).
+
+Secondary: Transparent background, 1px border, uppercase text.
+
+Hover Effects: Invert colors (Black → White) instantly or with a snappy transition.
+
+Inputs: Minimalist borders that darken on focus. No glowing outlines; use strict border color changes (outline-offset: 2px).
+
+4. Motion & Interaction (The "Alive" Feel)
+
+Timing: All transitions must use cubic-bezier(0.4, 0, 0.2, 1) for a "snappy" but smooth mechanical feel.
+
+Micro-interactions:
+
+Success: Brief, non-intrusive inline animations (e.g., a small "✓" appearing inside an input).
+
+Deletion: Items should slide out to the side (transform: translateX(-100%)) and collapse (max-height: 0) rather than just disappearing.
+
+5. Layout Strategy
+
+Massive Typography: Key data (like timers or counters) should be aggressively large (clamp(5rem, 15vw, 9rem)) to serve as peripheral visual anchors.
+
+Peripheral Monitoring: Design the UI so it is readable from 2 meters away.
+
+Task: based on these rules, please design/generate code for [INSERT YOUR NEW APP IDEA HERE].

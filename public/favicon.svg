@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <style>
+      .bg { fill: #0a0a0a; }
+      .fg { fill: #ffffff; }
+      @media (prefers-color-scheme: dark) {
+        .bg { fill: #ffffff; }
+        .fg { fill: #0a0a0a; }
+      }
+    </style>
+  </defs>
+  <rect class="bg" x="0" y="0" width="64" height="64" rx="16" />
+  <path class="fg" d="M24 19H42V24H29.5V30H39.5V35H29.5V45H24V19Z" />
+</svg>

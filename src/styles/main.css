@@ -102,6 +102,38 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Subtle Gradient Background */
+body::before {
+  content: '';
+  position: fixed;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  z-index: -1;
+  background: radial-gradient(circle at 50% 50%, rgba(240, 240, 240, 0.8), transparent 60%),
+    conic-gradient(from 0deg at 50% 50%, rgba(220, 220, 220, 0.3) 0deg, transparent 60deg, rgba(230, 230, 230, 0.3) 120deg, transparent 180deg);
+  pointer-events: none;
+  animation: bg-spin 60s linear infinite;
+  opacity: 0.6;
+}
+
+body.dark::before {
+  background: radial-gradient(circle at 50% 50%, rgba(30, 30, 30, 0.8), transparent 60%),
+    conic-gradient(from 0deg at 50% 50%, rgba(40, 40, 40, 0.4) 0deg, transparent 60deg, rgba(50, 50, 50, 0.4) 120deg, transparent 180deg);
+  opacity: 0.8;
+}
+
+@keyframes bg-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 /* App Container */
 #app {
   min-height: 100vh;
@@ -189,11 +221,23 @@ body {
 
 /* Card System */
 .glass-card {
-  background: var(--bg-card);
-  border: 1px solid var(--border-primary);
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-top: 1px solid rgba(255, 255, 255, 0.8);
+  border-left: 1px solid rgba(255, 255, 255, 0.8);
   border-radius: 2px;
   padding: 2.5rem;
-  box-shadow: 0 1px 3px var(--shadow-color);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05), inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+}
+
+body.dark .glass-card {
+  background: rgba(10, 10, 10, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  border-left: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), inset 0 0 0 1px rgba(255, 255, 255, 0.02);
 }
 
 /* Timer Section */
@@ -296,6 +340,7 @@ svg.timer-circle {
   letter-spacing: 0.1em;
   background: transparent;
   color: var(--text-primary);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .control-btn:hover {
@@ -411,6 +456,7 @@ svg.timer-circle {
   text-transform: uppercase;
   letter-spacing: 0.05em;
   white-space: nowrap;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .add-todo-btn:hover {
@@ -451,7 +497,7 @@ svg.timer-circle {
   background: var(--bg-secondary);
   border: 1.5px solid var(--border-primary);
   border-radius: 2px;
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   cursor: grab;
 }
 
@@ -522,7 +568,9 @@ svg.timer-circle {
   align-items: center;
   justify-content: center;
   font-size: 0.875rem;
+  font-size: 0.875rem;
   background: transparent;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .complete-btn {
@@ -642,7 +690,7 @@ svg.timer-circle {
   color: var(--text-secondary);
   text-decoration: none;
   font-weight: 500;
-  transition: all 0.2s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   padding: 0.5rem 1rem;
   border: 1px solid var(--border-primary);
   border-radius: 2px;
