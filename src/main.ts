@@ -10,7 +10,7 @@ import { TodoStorage } from './utils/todoStorage.js';
 import { SESSION_TYPES, TIMER_STATES } from './utils/constants.js';
 import './styles/main.css';
 
-// Particle system removed for static design
+
 
 // Minimal Luxury Theme Manager
 class ThemeManager {
@@ -84,7 +84,7 @@ class ThemeManager {
   }
 }
 
-// Interactive effects removed for static design
+
 
 class FokusApp {
   private timer: PomodoroTimer;
@@ -117,10 +117,6 @@ class FokusApp {
   private initializeLuxuryEffects(): void {
     // Initialize theme system only
     this.themeManager = new ThemeManager();
-
-    // Particle system and interactive effects disabled for static design
-    // this.particleSystem = new ParticleSystem();
-    // this.interactiveEffects = new InteractiveEffects();
 
     // Store references to prevent unused variable warnings
     void this.themeManager;
