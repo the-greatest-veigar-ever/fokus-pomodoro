@@ -21,7 +21,7 @@ export interface DailyStatistics {
 export class StorageManager {
   private static instance: StorageManager;
 
-  private constructor() {}
+  private constructor() { }
 
   public static getInstance(): StorageManager {
     if (!StorageManager.instance) {
@@ -133,7 +133,7 @@ export class StorageManager {
 
     let streak = 0;
     const today = new Date(currentDate);
-    let checkDate = new Date(today);
+    const checkDate = new Date(today);
 
     // Check each day backwards from current date
     for (let i = 0; i < allDates.length; i++) {
@@ -218,7 +218,7 @@ export class StorageManager {
 
       // Estimate current usage
       for (const key in localStorage) {
-        if (localStorage.hasOwnProperty(key)) {
+        if (Object.hasOwn(localStorage, key)) {
           total += localStorage[key].length + key.length;
         }
       }

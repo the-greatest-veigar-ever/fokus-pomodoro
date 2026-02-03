@@ -11,7 +11,8 @@ export class AudioNotificationManager {
     // Only create AudioContext when needed to avoid browser warnings
     document.addEventListener('click', () => {
       if (!this.audioContext) {
-        this.audioContext = new (window.AudioContext || (window as any).webkitAudioContext)();
+        const AudioContextClass = window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
+        this.audioContext = new AudioContextClass();
       }
     }, { once: true });
   }
@@ -67,7 +68,8 @@ export class AudioNotificationManager {
 
   private async playAudioNotification(type: 'workComplete' | 'breakComplete'): Promise<void> {
     if (!this.audioContext) {
-      this.audioContext = new (window.AudioContext || (window as any).webkitAudioContext)();
+      const AudioContextClass = window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
+      this.audioContext = new AudioContextClass();
     }
 
     if (this.audioContext.state === 'suspended') {

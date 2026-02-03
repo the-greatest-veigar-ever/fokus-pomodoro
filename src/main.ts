@@ -231,7 +231,7 @@ class FokusApp {
     }, { once: true });
   }
 
-  private async handleSessionCompletion(eventData: any): Promise<void> {
+  private async handleSessionCompletion(eventData: { sessionType: string }): Promise<void> {
     const { sessionType } = eventData;
 
     // Play appropriate notification
@@ -285,10 +285,10 @@ class FokusApp {
     }
 
     // Handle PWA installation prompt
-    let deferredPrompt: any;
+    let deferredPrompt: BeforeInstallPromptEvent | null;
     window.addEventListener('beforeinstallprompt', (e) => {
       e.preventDefault();
-      deferredPrompt = e;
+      deferredPrompt = e as BeforeInstallPromptEvent;
 
       // Show install button after a delay
       setTimeout(() => {
@@ -303,7 +303,7 @@ class FokusApp {
     });
   }
 
-  private showInstallPrompt(deferredPrompt: any): void {
+  private showInstallPrompt(deferredPrompt: BeforeInstallPromptEvent | null): void {
     if (!deferredPrompt) return;
 
     const installBanner = document.createElement('div');
@@ -355,14 +355,16 @@ class FokusApp {
 
     // Handle install button click
     installBanner.querySelector('#install-btn')?.addEventListener('click', () => {
-      deferredPrompt.prompt();
-      deferredPrompt.userChoice.then((choiceResult: any) => {
-        if (choiceResult.outcome === 'accepted') {
-          console.log('User accepted the install prompt');
-        }
-        deferredPrompt = null;
-        installBanner.remove();
-      });
+      if (deferredPrompt) {
+        deferredPrompt.prompt();
+        deferredPrompt.userChoice.then((choiceResult: { outcome: string }) => {
+          if (choiceResult.outcome === 'accepted') {
+            console.log('User accepted the install prompt');
+          }
+          deferredPrompt = null;
+          installBanner.remove();
+        });
+      }
     });
 
     // Handle dismiss button click
@@ -450,7 +452,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const app = new FokusApp();
 
   // Make app available globally for debugging
-  (window as any).fokusApp = app;
+  (window as unknown as { fokusApp: FokusApp }).fokusApp = app;
 });
 
 // Handle any unhandled errors gracefully

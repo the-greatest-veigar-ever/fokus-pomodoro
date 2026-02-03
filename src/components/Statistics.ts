@@ -145,7 +145,7 @@ export class Statistics {
 
     let streak = 0;
     const today = new Date();
-    let checkDate = new Date(today);
+    const checkDate = new Date(today);
 
     for (const entry of sorted) {
       const entryDate = new Date(entry.date);
