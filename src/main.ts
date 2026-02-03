@@ -129,6 +129,8 @@ class FokusApp {
     this.setupInfoPopup();
   }
 
+
+
   private setupInfoPopup(): void {
     const infoBtn = document.getElementById('info-btn');
     const infoPopup = document.getElementById('info-popup');
@@ -185,6 +187,16 @@ class FokusApp {
     // Handle timer completion events
     this.timer.addEventListener('timerUpdate', (event: Event) => {
       const eventData = (event as CustomEvent).detail;
+
+      // Update Zen Mode
+      if (eventData.state === TIMER_STATES.RUNNING) {
+        document.body.classList.add('zen-mode');
+      } else {
+        document.body.classList.remove('zen-mode');
+      }
+
+      // Update Tab Title
+      this.updateTabTitle();
 
       if (eventData.state === TIMER_STATES.COMPLETED) {
         this.handleSessionCompletion(eventData);

@@ -102,6 +102,33 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Zen Mode */
+body.zen-mode .app-header,
+body.zen-mode .stats-section,
+body.zen-mode .todo-section,
+body.zen-mode .settings-section,
+body.zen-mode .app-footer {
+  opacity: 0.1;
+  filter: blur(2px);
+  pointer-events: none;
+  transition: all 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body.zen-mode .app-header:hover,
+body.zen-mode .stats-section:hover,
+body.zen-mode .todo-section:hover,
+body.zen-mode .settings-section:hover,
+body.zen-mode .app-footer:hover {
+  opacity: 1;
+  filter: blur(0);
+  pointer-events: auto;
+}
+
+body.zen-mode .timer-section {
+  transform: scale(1.05);
+  transition: transform 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 /* Subtle Gradient Background */
 body::before {
   content: '';
@@ -220,6 +247,7 @@ body.dark::before {
 }
 
 /* Card System */
+/* Card System */
 .glass-card {
   background: rgba(255, 255, 255, 0.4);
   backdrop-filter: blur(24px);
@@ -245,6 +273,7 @@ body.dark .glass-card {
   text-align: center;
   padding: 4rem 3rem;
   position: relative;
+  transition: transform 1.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* Hide only circular timer elements, not the time display */
@@ -283,6 +312,21 @@ svg.timer-circle {
   display: block !important;
   position: relative;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  animation: breathe 8s infinite ease-in-out;
+}
+
+@keyframes breathe {
+
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.9;
+  }
+
+  50% {
+    transform: scale(1.02);
+    opacity: 1;
+  }
 }
 
 .time-display::after {
