@@ -1,9 +1,10 @@
 const CACHE_NAME = 'fokus-v1';
 const urlsToCache = [
-  '/',
-  '/index.html',
-  '/manifest.json',
-  '/icon.svg'
+  './',
+  'index.html',
+  'manifest.json',
+  'favicon.svg',
+  'icon.svg'
 ];
 
 // Install event - cache resources
@@ -25,7 +26,7 @@ self.addEventListener('fetch', (event) => {
         // Return cached version or fetch from network
         return response || fetch(event.request);
       }
-    )
+      )
   );
 });
 
