@@ -1,4 +1,5 @@
 import { TodoStorage, type TodoItem } from '../utils/todoStorage.js';
+import { gsap } from 'gsap';
 
 export class TodoList {
   private todoStorage: TodoStorage;
@@ -115,6 +116,15 @@ export class TodoList {
       this.render();
       this.showSuccessMessage('Task added successfully');
 
+      // GSAP animate the newly added item (it will be the first or last depending on storage, usually last)
+      const newElement = this.todoList.lastElementChild;
+      if (newElement) {
+        gsap.fromTo(newElement, 
+          { opacity: 0, y: -20 }, 
+          { opacity: 1, y: 0, duration: 0.4, ease: 'power2.out' }
+        );
+      }
+
       // Focus back to input for quick adding
       this.todoInput.focus();
     } catch (error) {
@@ -216,7 +226,12 @@ export class TodoList {
 
     // Update todo count if element exists
     if (this.todoCount) {
-      this.todoCount.textContent = `${counts.active} active, ${counts.completed} completed`;
+      if (todos.length === 0) {
+        this.todoCount.style.display = 'none';
+      } else {
+        this.todoCount.style.display = 'block';
+        this.todoCount.textContent = `${counts.active} active, ${counts.completed} completed`;
+      }
     }
 
     // Clear the list
@@ -241,29 +256,13 @@ export class TodoList {
     const emptyState = document.createElement('div');
     emptyState.className = 'todo-empty';
     emptyState.innerHTML = `
-      <div style="font-size: 2rem; margin-bottom: 0.5rem;">📝</div>
-      <p>No tasks yet. Add one above to get started!</p>
-      <p style="font-size: 0.875rem; margin-top: 0.5rem; opacity: 0.7;">
-        Tasks are saved for 24 hours
-      </p>
+      <p style="color: var(--text-tertiary); font-weight: 300;">No active tasks.</p>
     `;
     this.todoList.appendChild(emptyState);
   }
 
   private renderHint(): void {
-    const existingHint = this.container.querySelector('.todo-hint');
-    if (existingHint) return;
-
-    const hint = document.createElement('div');
-    hint.className = 'todo-hint';
-    hint.innerHTML = `
-      <span>💡 Double-click to edit</span>
-      <span class="separator">•</span>
-      <span>Drag to reorder</span>
-    `;
-
-    // Insert after todo-list
-    this.todoList.after(hint);
+    // Hint removed for minimalism
   }
 
   private createTodoElement(todo: TodoItem): HTMLElement {

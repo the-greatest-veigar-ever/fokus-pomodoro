@@ -1,17 +1,16 @@
 import { PomodoroTimer, type TimerEventData } from './Timer.js';
 import { SESSION_TYPES, TIMER_STATES } from '../utils/constants.js';
+import { animationManager } from '../utils/animations.js';
 
 export class TimerDisplay {
   private timer: PomodoroTimer;
   private sessionTypeElement: HTMLElement;
   private timeDisplayElement: HTMLElement;
-  private progressFillElement: HTMLElement;
 
   constructor(timer: PomodoroTimer) {
     this.timer = timer;
     this.sessionTypeElement = document.querySelector('.session-type') as HTMLElement;
     this.timeDisplayElement = document.querySelector('.time-display') as HTMLElement;
-    this.progressFillElement = document.querySelector('.progress-fill') as HTMLElement;
 
     this.timer.addEventListener('timerUpdate', this.handleTimerUpdate.bind(this));
     this.updateDisplay();
@@ -53,10 +52,8 @@ export class TimerDisplay {
   }
 
   private updateProgressIndicators(progress: number): void {
-    // Update linear progress bar
-    if (this.progressFillElement) {
-      this.progressFillElement.style.width = `${progress}%`;
-    }
+    // Animate SVG circular progress via GSAP
+    animationManager.animateTimerTick(progress);
   }
 
   private updateCircularTimerGradient(_sessionType: string): void {

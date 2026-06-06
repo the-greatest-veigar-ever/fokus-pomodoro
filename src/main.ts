@@ -8,6 +8,7 @@ import { AudioNotificationManager } from './utils/audio.js';
 import { StorageManager } from './utils/storage.js';
 import { TodoStorage } from './utils/todoStorage.js';
 import { SESSION_TYPES, TIMER_STATES } from './utils/constants.js';
+import { animationManager } from './utils/animations.js';
 import './styles/main.css';
 
 
@@ -184,11 +185,13 @@ class FokusApp {
     this.timer.addEventListener('timerUpdate', (event: Event) => {
       const eventData = (event as CustomEvent).detail;
 
-      // Update Zen Mode
+      // Update Zen Mode via AnimationManager
       if (eventData.state === TIMER_STATES.RUNNING) {
         document.body.classList.add('zen-mode');
+        animationManager.animateTimerZenMode(true);
       } else {
         document.body.classList.remove('zen-mode');
+        animationManager.animateTimerZenMode(false);
       }
 
       // Update Tab Title
