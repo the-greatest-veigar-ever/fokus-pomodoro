@@ -5,9 +5,39 @@ export class AnimationManager {
 
   constructor() {
     if (!this.mediaQuery.matches) {
+      this.initBackgroundAnimation();
       this.initPageLoadAnimations();
       this.initMagneticButtons();
     }
+  }
+
+  private initBackgroundAnimation() {
+    // Monochrome Kinetic Background: Slow, massive breathing circles
+    const circles = document.querySelectorAll('.kinetic-circle');
+    if (!circles.length) return;
+
+    circles.forEach((circle, index) => {
+      // Randomize initial positions slightly
+      gsap.set(circle, {
+        x: 'random(-10vw, 10vw)',
+        y: 'random(-10vh, 10vh)',
+        scale: 'random(0.8, 1.2)',
+        opacity: 'random(0.01, 0.04)'
+      });
+
+      // Infinite breathing animation
+      gsap.to(circle, {
+        x: 'random(-30vw, 30vw)',
+        y: 'random(-30vh, 30vh)',
+        scale: 'random(1, 1.8)',
+        opacity: 'random(0.02, 0.08)',
+        duration: 'random(20, 40)',
+        ease: 'sine.inOut',
+        yoyo: true,
+        repeat: -1,
+        delay: index * -5 // Offset starts
+      });
+    });
   }
 
   private initPageLoadAnimations() {

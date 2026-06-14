@@ -14,8 +14,11 @@ import './styles/main.css';
 
 
 // Minimal Luxury Theme Manager
+type AppTheme = 'dark' | 'light' | 'yellow';
+const THEME_ORDER: AppTheme[] = ['dark', 'light', 'yellow'];
+
 class ThemeManager {
-  private isDark: boolean = false;
+  private currentTheme: AppTheme = 'dark';
   private toggleButton: HTMLButtonElement | null = null;
   private themeIcon: HTMLElement | null = null;
 
@@ -26,25 +29,30 @@ class ThemeManager {
 
   private initializeTheme(): void {
     // Check localStorage for saved preference
-    const savedTheme = localStorage.getItem('fokus-theme');
+    const savedTheme = localStorage.getItem('fokus-theme') as AppTheme | null;
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
-    this.isDark = savedTheme ? savedTheme === 'dark' : prefersDark;
+    if (savedTheme && THEME_ORDER.includes(savedTheme)) {
+      this.currentTheme = savedTheme;
+    } else {
+      this.currentTheme = prefersDark ? 'dark' : 'light';
+    }
+    
     this.applyTheme();
 
     // Listen for system theme changes
     window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
       if (!localStorage.getItem('fokus-theme')) {
-        this.isDark = e.matches;
+        this.currentTheme = e.matches ? 'dark' : 'light';
         this.applyTheme();
-        this.updateToggleIcon();
+        this.updateToggleIcon(false);
       }
     });
   }
 
   private setupToggleButton(): void {
-    this.toggleButton = document.getElementById('theme-toggle') as HTMLButtonElement;
-    this.themeIcon = document.querySelector('.theme-icon');
+    this.toggleButton = document.getElementById('theme-btn') as HTMLButtonElement;
+    this.themeIcon = document.getElementById('theme-icon');
 
     if (this.toggleButton) {
       this.toggleButton.addEventListener('click', () => {
@@ -52,36 +60,67 @@ class ThemeManager {
       });
     }
 
-    this.updateToggleIcon();
+    this.updateToggleIcon(false);
   }
 
   private applyTheme(): void {
-    if (this.isDark) {
-      document.body.classList.remove('light');
-      document.body.classList.add('dark');
+    if (this.currentTheme === 'dark') {
+      document.documentElement.removeAttribute('data-theme');
     } else {
-      document.body.classList.remove('dark');
-      document.body.classList.add('light');
+      document.documentElement.setAttribute('data-theme', this.currentTheme);
     }
   }
 
-  private updateToggleIcon(): void {
-    if (this.themeIcon) {
-      this.themeIcon.textContent = this.isDark ? '☀️' : '🌙';
+  private updateToggleIcon(animate = true): void {
+    if (!this.themeIcon) return;
+    
+    let pathD = "";
+    if (this.currentTheme === 'dark') {
+      pathD = "M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"; // Moon
+    } else if (this.currentTheme === 'light') {
+      pathD = "M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32l1.41 1.41M2 12h2m16 0h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41M12 16a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"; // Sun
+    } else {
+      // Yellow theme - Meditation Lotus/Leaf abstract
+      pathD = "M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z M12 6c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6z"; // Concentric circles
+    }
+      
+    const pathEl = this.themeIcon.querySelector('path');
+    if (pathEl) {
+      if (animate && (window as any).gsap) {
+        (window as any).gsap.to(this.themeIcon, {
+          rotation: "+=90",
+          opacity: 0,
+          duration: 0.3,
+          ease: "power2.in",
+          onComplete: () => {
+            pathEl.setAttribute('d', pathD);
+            (window as any).gsap.to(this.themeIcon, {
+              rotation: "+=90",
+              opacity: 1,
+              duration: 0.5,
+              ease: "power2.out"
+            });
+          }
+        });
+      } else {
+        pathEl.setAttribute('d', pathD);
+      }
     }
   }
 
   public toggleTheme(): void {
-    this.isDark = !this.isDark;
+    const currentIndex = THEME_ORDER.indexOf(this.currentTheme);
+    this.currentTheme = THEME_ORDER[(currentIndex + 1) % THEME_ORDER.length];
+    
     this.applyTheme();
-    this.updateToggleIcon();
+    this.updateToggleIcon(true);
 
     // Save preference
-    localStorage.setItem('fokus-theme', this.isDark ? 'dark' : 'light');
+    localStorage.setItem('fokus-theme', this.currentTheme);
   }
 
   public getCurrentTheme(): string {
-    return this.isDark ? 'dark' : 'light';
+    return this.currentTheme;
   }
 }
 

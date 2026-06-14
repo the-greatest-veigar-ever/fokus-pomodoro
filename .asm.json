@@ -1,0 +1,11 @@
+{
+  "rules": [
+    "global",
+    "typescript",
+    "taste-skill",
+    "gsap",
+    "agent-skills-osmani",
+    "fokus-design"
+  ],
+  "output": ".cursorrules"
+}

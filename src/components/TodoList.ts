@@ -160,7 +160,7 @@ export class TodoList {
       right: 12px;
       top: 50%;
       transform: translateY(-50%);
-      color: var(--secondary-emerald);
+      color: var(--text-primary);
       font-weight: bold;
       font-size: 18px;
       pointer-events: none;
